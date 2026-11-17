@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="coord_formats">
+        <item>تلقائي (Auto)</item>
+        <item>DD — درجات عشرية</item>
+        <item>DDMM — درجات ودقائق</item>
+        <item>DDMMSS — درجات ودقائق وثواني</item>
+    </string-array>
+
+    <string-array name="lat_directions">
+        <item>N شمال</item>
+        <item>S جنوب</item>
+    </string-array>
+
+    <string-array name="lon_directions">
+        <item>E شرق</item>
+        <item>W غرب</item>
+    </string-array>
+
+    <string-array name="speed_units">
+        <item>km/h</item>
+        <item>m/s</item>
+        <item>Knot</item>
+    </string-array>
+</resources>
