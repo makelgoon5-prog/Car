@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/bg"
+    android:layoutDirection="rtl">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="22sp" android:textStyle="bold"
+            android:textColor="@color/primary_dark"
+            android:gravity="center"
+            android:paddingTop="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitle"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:gravity="center"
+            android:paddingBottom="16dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/section_coords"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/primary" />
+
+                <CheckBox
+                    android:id="@+id/pasteSingleCheckbox"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/paste_single_checkbox"
+                    android:textColor="@color/text_primary" />
+
+                <LinearLayout
+                    android:id="@+id/separateCoordGroup"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/coord_format"
+                        android:textSize="13sp" android:textColor="@color/text_secondary" />
+
+                    <Spinner
+                        android:id="@+id/formatSpinner"
+                        android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+
+                        <EditText
+                            android:id="@+id/latInput"
+                            android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_latitude"
+                            android:inputType="numberDecimal|numberSigned"
+                            android:digits="0123456789.-,"
+                            android:maxLines="1"
+                            android:imeOptions="actionNext"
+                            android:nextFocusForward="@id/lonInput" />
+
+                        <Spinner
+                            android:id="@+id/latDirSpinner"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+
+                        <EditText
+                            android:id="@+id/lonInput"
+                            android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_longitude"
+                            android:inputType="numberDecimal|numberSigned"
+                            android:digits="0123456789.-,"
+                            android:maxLines="1"
+                            android:imeOptions="actionNext"
+                            android:nextFocusForward="@id/speedInput" />
+
+                        <Spinner
+                            android:id="@+id/lonDirSpinner"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/singleCoordGroup"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="الصق الإحداثيين (DD فقط)"
+                        android:textSize="13sp" android:textColor="@color/text_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+
+                        <EditText
+                            android:id="@+id/singleCoordInput"
+                            android:layout_width="0dp" android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_single_coord"
+                            android:inputType="numberDecimal|numberSigned|textMultiLine"
+                            android:digits="0123456789.-, ;"
+                            android:maxLines="3"
+                            android:imeOptions="actionNext"
+                            android:nextFocusForward="@id/speedInput"
+                            android:textDirection="ltr" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/pasteButton"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:text="@string/btn_paste"
+                            android:minWidth="0dp"
+                            android:paddingStart="14dp" android:paddingEnd="14dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/pasteStatus"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/section_speed"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/primary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/speedInput"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_speed"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789.,"
+                        android:maxLines="1"
+                        android:imeOptions="actionNext"
+                        android:nextFocusForward="@id/courseInput" />
+
+                    <Spinner
+                        android:id="@+id/speedUnitSpinner"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/section_course"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/primary" />
+
+                <EditText
+                    android:id="@+id/courseInput"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/hint_course"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789.,"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:nextFocusForward="@id/hoursInput" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/section_time"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/primary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:orientation="vertical"
+                        android:layout_marginEnd="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/hours" android:textSize="12sp"
+                            android:textColor="@color/text_secondary" />
+                        <EditText android:id="@+id/hoursInput"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:hint="@string/hint_time"
+                            android:inputType="numberDecimal" android:digits="0123456789.,"
+                            android:maxLines="1" android:imeOptions="actionNext"
+                            android:nextFocusForward="@id/minutesInput" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:orientation="vertical"
+                        android:layout_marginStart="4dp" android:layout_marginEnd="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/minutes" android:textSize="12sp"
+                            android:textColor="@color/text_secondary" />
+                        <EditText android:id="@+id/minutesInput"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:hint="@string/hint_time"
+                            android:inputType="numberDecimal" android:digits="0123456789.,"
+                            android:maxLines="1" android:imeOptions="actionNext"
+                            android:nextFocusForward="@id/secondsInput" />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:orientation="vertical"
+                        android:layout_marginStart="4dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="@string/seconds" android:textSize="12sp"
+                            android:textColor="@color/text_secondary" />
+                        <EditText android:id="@+id/secondsInput"
+                            android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:hint="@string/hint_time"
+                            android:inputType="numberDecimal" android:digits="0123456789.,"
+                            android:maxLines="1" android:imeOptions="actionDone" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="12dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/calculateButton"
+                android:layout_width="0dp" android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:text="@string/btn_calculate"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/resetButton"
+                android:layout_width="0dp" android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:text="@string/btn_reset" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/resultsCard"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone"
+            app:cardCornerRadius="12dp" app:cardElevation="2dp"
+            app:cardBackgroundColor="#E3F2FD">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/section_results"
+                    android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/primary_dark" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:text="@string/result_distance"
+                        android:textStyle="bold" />
+                    <TextView android:id="@+id/resultDistanceValue"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:gravity="end"
+                        android:textDirection="ltr" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:text="@string/result_time"
+                        android:textStyle="bold" />
+                    <TextView android:id="@+id/resultTimeValue"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:gravity="end" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:text="@string/result_speed"
+                        android:textStyle="bold" />
+                    <TextView android:id="@+id/resultSpeedValue"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:gravity="end"
+                        android:textDirection="ltr" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:text="@string/result_course"
+                        android:textStyle="bold" />
+                    <TextView android:id="@+id/resultCourseValue"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:gravity="end"
+                        android:textDirection="ltr" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:text="@string/result_lat"
+                        android:textStyle="bold" />
+                    <TextView android:id="@+id/resultLatValue"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:gravity="end"
+                        android:textDirection="ltr" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:text="@string/result_lon"
+                        android:textStyle="bold" />
+                    <TextView android:id="@+id/resultLonValue"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content" android:gravity="end"
+                        android:textDirection="ltr" />
+                </LinearLayout>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" android:text="@string/result_dd"
+                    android:textStyle="bold" android:textColor="@color/primary_dark" />
+                <TextView android:id="@+id/resultDDValue"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textDirection="ltr" android:fontFamily="monospace" />
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:text="@string/result_ddmm"
+                    android:textStyle="bold" android:textColor="@color/primary_dark" />
+                <TextView android:id="@+id/resultDDMMValue"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textDirection="ltr" android:fontFamily="monospace" />
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" android:text="@string/result_ddmmss"
+                    android:textStyle="bold" android:textColor="@color/primary_dark" />
+                <TextView android:id="@+id/resultDDMMSSValue"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:textDirection="ltr" android:fontFamily="monospace" />
+
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/copyCoordsButton"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:text="@string/btn_copy_coords" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/copyAllButton"
+                        android:layout_width="0dp" android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="@string/btn_copy_all" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>
