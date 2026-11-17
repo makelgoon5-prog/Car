@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">حاسبة موقع السيارة</string>
+    <string name="subtitle">حساب الموقع المتوقع بناءً على السرعة والاتجاه والزمن</string>
+
+    <string name="section_coords">إحداثيات نقطة الانطلاق</string>
+    <string name="coord_format">صيغة الإحداثيات</string>
+    <string name="latitude">خط العرض</string>
+    <string name="longitude">خط الطول</string>
+    <string name="hint_latitude">مثال: 24.7139</string>
+    <string name="hint_longitude">مثال: 46.6753</string>
+
+    <string name="paste_single_checkbox">لصق إحداثية واحدة</string>
+    <string name="hint_single_coord">مثال: 38.98474 29.04876</string>
+    <string name="btn_paste">لصق</string>
+    <string name="paste_empty">الحافظة فارغة</string>
+    <string name="paste_success">تم قراءة الإحداثيات بنجاح</string>
+    <string name="paste_only_dd">خانة اللصق تقبل الدرجات العشرية DD فقط</string>
+    <string name="paste_need_two">أدخل إحداثيين فقط (Latitude و Longitude)</string>
+    <string name="paste_invalid">قيمة غير رقمية</string>
+    <string name="paste_more_than_two">يوجد أكثر من إحداثيين — احذف القيم الزائدة</string>
+
+    <string name="section_speed">السرعة</string>
+    <string name="hint_speed">0.0</string>
+
+    <string name="section_course">اتجاه الحركة (الكورس)</string>
+    <string name="hint_course">0 – 360</string>
+
+    <string name="section_time">مدة الحركة</string>
+    <string name="hours">ساعات</string>
+    <string name="minutes">دقائق</string>
+    <string name="seconds">ثواني</string>
+    <string name="hint_time">0</string>
+
+    <string name="btn_calculate">احسب الموقع</string>
+    <string name="btn_reset">إعادة تعيين</string>
+    <string name="btn_copy_coords">نسخ الإحداثيات</string>
+    <string name="btn_copy_all">نسخ جميع النتائج</string>
+
+    <string name="section_results">النتائج</string>
+    <string name="result_distance">المسافة المقطوعة</string>
+    <string name="result_time">مدة الحركة</string>
+    <string name="result_speed">السرعة</string>
+    <string name="result_course">اتجاه الحركة</string>
+    <string name="result_lat">خط العرض النهائي</string>
+    <string name="result_lon">خط الطول النهائي</string>
+    <string name="result_dd">DD (درجات عشرية)</string>
+    <string name="result_ddmm">DDMM</string>
+    <string name="result_ddmmss">DDMMSS</string>
+
+    <string name="copied">تم النسخ</string>
+</resources>
