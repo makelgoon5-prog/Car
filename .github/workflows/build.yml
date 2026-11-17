@@ -22,11 +22,16 @@ jobs:
         with:
           packages: 'platform-tools'
 
+      - name: Create Debug Keystore
+        run: |
+          mkdir -p $HOME/.android
+          keytool -genkey -v -keystore $HOME/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
       - name: Build Debug APK
-        run: gradle assembleDebug
+        run: gradle clean assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
