@@ -6,8 +6,7 @@ plugins {
 android {
    
 namespace = "com.example.carloccalc"
-generateNonNamespacedRClass = false
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.carloccalc"
